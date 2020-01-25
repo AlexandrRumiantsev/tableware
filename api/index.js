@@ -1,48 +1,39 @@
 const express = require("express");
 const app = express();
-
+const goods = require('./models/goods.js');
 const qs = require('querystring');
 //Обход CORS Блокировки
 var cors = require('cors');
 app.use(cors());
-
 var http = require('http').Server(app);
 var mysql = require('mysql');
-
 var config = require('./config');
+const controller = require('./controller');
 
 (function(){
-  "use strict";
-  
-   
- app.use(function (req, res, next) {
-    next();
- });
+    "use strict";
     
- app.get('/', function(req, res){
-
-    var con = mysql.createConnection({
+     var con = mysql.createConnection({
         host: config.data.host,
         user: config.data.login,
         password: config.data.password,
         database: config.data.nameBase
     });
-
-    con.connect(function(err) {
-      if (err) throw err;
-      console.log("Connected!");
-    }); 
     
-    var sql = "SELECT * FROM `goods` ";
-    con.query(sql, function (err, result) {
-        if (err) throw err;
-        console.log(result);
+     controller.action(
+         app,
+         {
+           'connect':con,
+           'goods':goods
+         }
+     );
+   
+    app.use(function (req, res, next) {
+        next();
     });
+
   
-    res.send('Hello world');
- });
-  
- http.listen(4000, ()=>{
+ http.listen(4001, ()=>{
       console.log('СЕРВЕР ЗАПУЩЕН');
  });  
  
