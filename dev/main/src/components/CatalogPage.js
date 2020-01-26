@@ -1,6 +1,7 @@
 import React from 'react';
 import CatalogList from './CatalogList';
 import LoadingScreen from './LoadingScreen';
+import TopMenu from './TopMenu';
 import axios from 'axios';
 
 class CatalogPage extends React.Component {
@@ -65,7 +66,7 @@ class CatalogPage extends React.Component {
                 
                 <div className="App">
                   <header>
-                    Шапка
+                    <TopMenu />
                   </header>
                   <main>
                   
