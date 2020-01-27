@@ -1,0 +1,28 @@
+.top-menu{
+  background: white;
+  margin: 0;
+  padding: 15px;
+  font-size: 18px;
+  display: flex;  
+  align-items: center;
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    .container-logo{
+      padding: 15px;
+      .container-logo__item{
+        max-width: 50px;
+      }
+    }
+    .top-menu__title{
+      font-size: 24px;
+      font-family: 'Pacifico', cursive;
+    }
+    nav{
+      width: 60%;
+      text-align: right;
+      width: 60%;
+      a{
+        padding: 5px;
+      }
+    }
+}
+

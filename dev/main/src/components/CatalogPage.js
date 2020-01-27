@@ -4,6 +4,8 @@ import LoadingScreen from './LoadingScreen';
 import TopMenu from './TopMenu';
 import axios from 'axios';
 
+import '../styles/CatalogPage/CatalogPage.css';
+
 class CatalogPage extends React.Component {
     getCatalog(){
       
@@ -48,14 +50,11 @@ class CatalogPage extends React.Component {
             return (
                 
                 <div className="App">
-                  <header>
-                    Шапка
-                  </header>
-                  <main>
-                  
+                 
+
                     <LoadingScreen />
                     
-                  </main>
+                 
                 </div>
                 
             );
@@ -64,7 +63,7 @@ class CatalogPage extends React.Component {
             console.log(this.state.arrCatalog);
            return (
                 
-                <div className="App">
+                <div className="CatalogPage">
                   <header>
                     <TopMenu />
                   </header>

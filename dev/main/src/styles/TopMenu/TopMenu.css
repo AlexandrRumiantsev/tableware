@@ -1,0 +1,38 @@
+.top-menu {
+  background: white;
+  margin: 0;
+  padding: 15px;
+  font-size: 18px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+          box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.top-menu .container-logo {
+  padding: 15px;
+}
+
+.top-menu .container-logo .container-logo__item {
+  max-width: 50px;
+}
+
+.top-menu .top-menu__title {
+  font-size: 24px;
+  font-family: 'Pacifico', cursive;
+}
+
+.top-menu nav {
+  width: 60%;
+  text-align: right;
+  width: 60%;
+}
+
+.top-menu nav a {
+  padding: 5px;
+}
+/*# sourceMappingURL=TopMenu.css.map */

@@ -1,9 +1,13 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
+import Statistik from './Statistik'
+
+import '../styles/CatalogItem/CatalogItem.css';
 
 class CatalogItem extends React.Component {
     
     popappCreate(data){
-        console.log(data);
+        const obj = this;
         var fieldsFormAdd = {
 					'0':{
 						'default': 3,
@@ -11,7 +15,10 @@ class CatalogItem extends React.Component {
 						'title': 'слой',
 						'type': 'section',
 						'fields': {
-							'className': 'section'
+							'className': 'section',
+							'onclick': function(){
+								this.remove();
+							}
 						},
 						'inElement':{
 								'0': {
@@ -20,7 +27,10 @@ class CatalogItem extends React.Component {
 								'type': 'main',
 								'fields': {
 								    'id': 'fid_' + data.id,
-									'className': 'section__box'
+									'className': 'section__box',
+									'onclick': function(e){
+										e.stopPropagation();;
+									}
 								},
 								'inElement':{
 								    '0':{
@@ -51,6 +61,31 @@ class CatalogItem extends React.Component {
 										'fields': {
 										    'className': 'section__discr',
 											'innerText': data.discr
+										},
+									},
+									'3':{
+										'default': 1,
+										'title': 'Статистика товара',
+										'type': 'span',
+										'fields': {
+										    'className': 'goods__statistik',
+											'innerText': 'Статистика товара',
+											'onclick': function(){
+											    this.parentElement.parentElement.remove();
+											    obj.statistik(data);
+											}
+										},
+									},
+									'4':{
+										'default': 1,
+										'title': 'Статистика товара',
+										'type': 'img',
+										'fields': {
+										    'className': 'goods__img',
+											'src': 'http://tableware.alexweber.ru/api/img/d-51.png',
+											'onclick': function(){
+											   
+											}
 										},
 									}
 								}
@@ -125,6 +160,11 @@ class CatalogItem extends React.Component {
 		   })
 		  
 		   return fld;
+	}
+	
+	statistik(data){
+	    console.log('Статистика');
+	    ReactDOM.render(<Statistik data={data}  />,  document.getElementById('root'))
 	}
 	
     render(){
