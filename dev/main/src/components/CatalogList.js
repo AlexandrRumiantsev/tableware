@@ -2,6 +2,8 @@ import React from 'react';
 import CatalogItem from './CatalogItem';
 import ReactDOM from 'react-dom';
 
+import '../styles/CatalogList/CatalogList.css';
+
 
 
 class CatalogList extends React.Component {
@@ -15,9 +17,11 @@ class CatalogList extends React.Component {
         return (
             <div className='goods'>
                 <h1>{this.Fields['title']}</h1>
-                {this.props.dataArray.map(n =>
-                  <CatalogItem data={n} /> 
-                )}
+                <div className='goods__container'>
+                    {this.props.dataArray.map(n =>
+                    <CatalogItem data={n} /> 
+                    )}
+                </div>
             </div>
        )
             

@@ -1,0 +1,39 @@
+.goods__container{
+  .goods__item{
+    margin: 15px;
+    width: 300px;
+    padding: 10px;
+    border-radius: 3px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    background: white;
+  }
+}
+.section{
+  background: rgba(51, 48, 48, 0.68);
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top:0;
+  display: flex;
+  align-items: center;
+  .section__box{
+    text-align: center;
+    width: 30%;
+    margin: auto auto;
+    padding: 30px;
+    background: white;
+    border-radius: 3px;
+    .section__close{
+      text-align: right;
+    }
+    .section__name{
+
+    }
+    .section__discr{
+
+    }
+    .goods__statistik{
+
+    }
+  }
+}
