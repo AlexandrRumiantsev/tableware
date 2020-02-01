@@ -1,6 +1,8 @@
 const initialState = {
     year: 2016,
-    //photos: ['222ss']
+    photos: {
+      '0': 'xxxx'
+    }
   }
   
   export default function page(state = initialState, action) {

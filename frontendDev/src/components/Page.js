@@ -7,8 +7,11 @@ export default class Page extends Component {
     this.props.setYear(+e.target.innerText)
   }
   render() {
-    const { year } = this.props
-
+    const { year , photos} = this.props
+    let count;
+    if(this.props.photos){
+      count = this.props.photos.propertyIsEnumerable.length;
+    }
     return <div>
       <p>
         <button onClick={this.onYearBtnClick.bind(this)}>2016</button>
@@ -16,15 +19,14 @@ export default class Page extends Component {
         <button onClick={this.onYearBtnClick.bind(this)}>2014</button>
       </p>
       <h3>{year} год</h3>
-      <p>У тебя  фото.</p>
+      <p>У тебя  {count} фото.</p>
     </div>
   }
 }
-console.log(PropTypes);
 
 Page.propTypes = {
-  //year: PropTypes.number.isRequired,
-  //photos: PropTypes.array.isRequired,
-  //setYear: PropTypes.func.isRequired
+  year: PropTypes.number.isRequired,
+  photos: PropTypes.array.isRequired,
+  setYear: PropTypes.func.isRequired
 }
 
