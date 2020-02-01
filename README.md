@@ -62,6 +62,10 @@
 | scss  | библиотека для компиляцмм стилей в css         |    npm install -g sass |
 | WebPack-DEV-сервер  | Используйте веб-пакет с сервером разработки, который обеспечивает перезагрузку в реальном времени. Это следует использовать только для разработки .         |    npm i --save-dev webpack webpack-dev-server webpack-cli |
 | babel-core babel-loader babel-preset-env babel-preset-react html-webpack-plugin  | набор библиотек для разработки        |    npm i --save-dev babel-core babel-loader babel-preset-env babel-preset-react html-webpack-plugin |
+| redux ,  react-redux | библиотека для  redux ,  react-redux   |    npm i redux react-redux --save |
+| prop-types  | Модуль   react     |    npm install --save prop-types |
+
+
 
 
 
