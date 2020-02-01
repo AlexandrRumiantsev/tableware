@@ -45,7 +45,7 @@
 * Добавление товара из административной панели.
 
 ## Требования к исходным кодам и языкам программирования.
-Язык программирования - JavaScript. Версия - ES6. Node.js - для серверной части. React.js - для разработки интерфейса.
+Язык программирования - JavaScript. Версия - ES7. Node.js - для серверной части. React.js - для разработки интерфейса.
 
 ## Список дополнительных модулей, используемые программой.
 
@@ -60,6 +60,12 @@
 | react-redux  | библиотека redux         |    npm install --save react-redux |
 | axios  | библиотека axios, для отправки запросов         |    npm install axios |
 | scss  | библиотека для компиляцмм стилей в css         |    npm install -g sass |
+| WebPack-DEV-сервер  | Используйте веб-пакет с сервером разработки, который обеспечивает перезагрузку в реальном времени. Это следует использовать только для разработки .         |    npm i --save-dev webpack webpack-dev-server webpack-cli |
+| babel-core babel-loader babel-preset-env babel-preset-react html-webpack-plugin  | набор библиотек для разработки        |    npm i --save-dev babel-core babel-loader babel-preset-env babel-preset-react html-webpack-plugin |
+
+
+
+
 
 
 ## Список инструментов для разработки.
