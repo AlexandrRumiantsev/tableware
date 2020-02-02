@@ -9,7 +9,7 @@ export default class Search extends Component {
     console.log(event.target.id);
     //type , url , setting
     let setting = '';
-    this.props.setApi( 'POST' , 'getItem' , setting , "id={event.target.id}");
+    this.props.setApi( 'POST' , 'getItemsByName' , setting);
   }
   constructor(props) {
     super(props);
