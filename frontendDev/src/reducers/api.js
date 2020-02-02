@@ -18,14 +18,5 @@ const initialState = {
         default:
           return state;
       }
-      /*
-    switch (action.type) {
-      case SET_API:
-        //return { ...state, year: action.payload }
-        return {}, state, {api: action.payload}
-      default:
-        return state;
-    }
-    */
   
   }

@@ -19,7 +19,7 @@ module.exports =  class goods {
     var sql = "SELECT * FROM `goods` where id="+id;
     
     con.query(sql, function (err, result) {
-        if (err) throw error
+        if (err) throw err
 
         callback(
             JSON.stringify(result) 

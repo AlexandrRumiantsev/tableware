@@ -1,10 +1,10 @@
 import { combineReducers } from 'redux'
 import page from './page'
-import user from './user'
+import menu from './menu'
 import api from './api'
 
 export default combineReducers({
   page,
-  user,
+  menu,
   api
 })

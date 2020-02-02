@@ -3,6 +3,6 @@ const initialState = {
     name: 'Аноним'
   }
   
-  export default function user(state = initialState) {
+  export default function menu(state = initialState) {
     return state
   }

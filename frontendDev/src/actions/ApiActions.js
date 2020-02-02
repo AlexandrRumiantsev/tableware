@@ -2,34 +2,24 @@ import {
   URL
 } from '../constants/Api'
 
-export function setApi(year) {
-   
+export function setApi(type , url , setting , postData) {
+
+
+  
   return (dispatch) => {
     dispatch({
       type: 'GET_DATA_REQUEST'
     })
     
-    /*
-    $.ajax(url)
-      .success(
-        dispatch({
-          type: 'GET_DATA_SUCCESS',
-          payload: response.photos
-        })
-      )
-      .error(
-        dispatch({
-          type: 'GET_DATA_FAILURE',
-          payload: response.error,
-          error: true
-        })
-      )
-  }
-  */
 
     
     var request = new XMLHttpRequest();
-    request.open('GET', 'http://alexweber.ru:4001/getCatalog' , true);
+
+    request.open(type, 'http://alexweber.ru:4001/'+url , true);
+    
+    
+    
+    // Доработать
     request.setRequestHeader('accept', 'application/json');
     
     request.onreadystatechange = function () {
@@ -51,8 +41,10 @@ export function setApi(year) {
       }
     }
     
-    request.send()
+    if(type == 'POST')
+      request.send(postData)
+    else request.send()
 
     }
-    
+
   }
