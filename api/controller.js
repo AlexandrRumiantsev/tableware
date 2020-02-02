@@ -3,11 +3,21 @@ module.exports = {
         app.get('/', function(req, res){
 
         });
+        
         app.get('/getCatalog', function(req, res){
            new data.goods(data.connect , 'getList', function(result){
                 res.send(result);
             });
         })
+        
+        app.get('/getItemsByName', function(req, res){
+             //console.log(res)
+            //console.log(req.query.name)
+           new data.goods(data.connect , ['getItemsByName' , req.query.name], function(result){
+                res.send(result);
+            });
+        })
+        
         app.post('/getItem', function(req, res){
 
             new data.goods(data.connect , ['getItem',req.headers.id], function(result){

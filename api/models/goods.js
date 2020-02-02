@@ -13,7 +13,19 @@ module.exports =  class goods {
     });
 
   }
-  
+   getItemsByName(con , callback , name){
+       console.log(name);
+       var sql = "SELECT * FROM `goods` where title= '" + name + "'";
+    
+        con.query(sql, function (err, result) {
+            if (err) throw err
+            console.log(result); 
+            callback(
+                JSON.stringify(result) 
+            );
+        
+        });
+   }
    getItem(con , callback , id){
        console.log(id);
     var sql = "SELECT * FROM `goods` where id="+id;
@@ -84,7 +96,9 @@ module.exports =  class goods {
              this.getList(connect , callback);
         break;
       }
-      
+      console.log(action);
+      if(action[0] == 'getItemsByName')
+            this.getItemsByName(connect , callback , action[1]);
       if(action[0] == 'getItem')
             this.getItem(connect , callback , action[1]);
       if(action[0] == 'delItem')
