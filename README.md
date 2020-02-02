@@ -68,6 +68,11 @@
 | autoprefixer | Модули для работы со стилями | npm install autoprefixer |
 | webpack-plugin | Модули для работы с webpack |    npm install --save-dev npm-install-webpack-plugin |
 redux-logger | производственный инструмент журналирования Redux, который позволяет воспроизводить проблемы, как если бы они возникали в вашем браузере. | npm i --save redux-logger |
+| webpack-plugin | Модули для работы с webpack |    npm install --save-dev npm-install-webpack-plugin |
+redux-thunk|  Redux | 
+npm install redux-thunk --save |
+
+npm install redux-thunk --save
 
 
 
