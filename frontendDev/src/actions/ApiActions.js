@@ -2,7 +2,7 @@ import {
   URL
 } from '../constants/Api'
 
-export function setApi(type , url , setting , postData) {
+export function setApi(type , url , nameSearch) {
 
 
   
@@ -16,8 +16,8 @@ export function setApi(type , url , setting , postData) {
     var request = new XMLHttpRequest();
 
     request.open(type, 'http://alexweber.ru:4001/'+url , true);
-    
-    
+    if(nameSearch)
+      request.open(type, 'http://alexweber.ru:4001/'+url+'?name='+nameSearch , true);
     
     // Доработать
     request.setRequestHeader('accept', 'application/json');
@@ -41,9 +41,8 @@ export function setApi(type , url , setting , postData) {
       }
     }
     
-    if(type == 'POST')
-      request.send(postData)
-    else request.send()
+    
+    request.send()
 
     }
 
