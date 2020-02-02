@@ -14,8 +14,10 @@ module.exports =  class goods {
 
   }
    getItemsByName(con , callback , name){
-       console.log(name);
-       var sql = "SELECT * FROM `goods` where title= '" + name + "'";
+       //Старый вариант - поиск по всему слову
+       //var sql = "SELECT * FROM `goods` where title= '" + name + "'";
+       //Новый  вариант - поиск по первой букве слова
+       var sql = "SELECT * FROM goods WHERE title LIKE '" + name + "%'"
     
         con.query(sql, function (err, result) {
             if (err) throw err
