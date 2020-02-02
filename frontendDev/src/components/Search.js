@@ -8,8 +8,10 @@ export default class Search extends Component {
     console.log(event.target.value);
     console.log(event.target.id);
     //type , url , setting
-    let setting = '';
-    this.props.setApi( 'GET' , 'getItemsByName' , event.target.value );
+    if(event.target.value == '')
+      this.props.setApi('GET' , 'getCatalog' , '')
+    else
+      this.props.setApi( 'GET' , 'getItemsByName' , event.target.value );
   }
   constructor(props) {
     super(props);
