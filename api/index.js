@@ -8,7 +8,9 @@ app.use(cors());
 var http = require('http').Server(app);
 var mysql = require('mysql');
 var config = require('./config');
-const controller = require('./controller');
+const controllerGoods = require('./controllerGoods');
+const controllerUser = require('./controllerUser');
+const user = require('./models/user.js');
 
 (function(){
     "use strict";
@@ -20,11 +22,19 @@ const controller = require('./controller');
         database: config.data.nameBase
     });
     
-     controller.action(
+     controllerGoods.action(
          app,
          {
            'connect':con,
            'goods':goods
+         }
+     );
+     
+     controllerUser.action(
+         app,
+         {
+           'connect':con,
+           'user':user
          }
      );
    
