@@ -3,7 +3,8 @@ import PropTypes from 'prop-types';
 
 export default class Menu extends Component {
   popappCreate(data){
-    const obj = this;
+    const self = this;
+
     var fieldsFormAdd = {
       '0':{
         'default': 3,
@@ -11,6 +12,7 @@ export default class Menu extends Component {
         'title': 'слой',
         'type': 'section',
         'fields': {
+          'id': 'form_reg',
           'className': 'section',
           'onclick': function(){
             this.remove();
@@ -28,19 +30,30 @@ export default class Menu extends Component {
               }
             },
             'inElement':{
-                '0':{
+              '0':{
                 'default': 1,
-                'title': 'закрыть',
-                'type': 'header',
+                'title': '',
+                'type': 'h1',
                 'fields': {
-                  'className': 'section__close',
-                  'innerText': 'Закрыть',
+                  'innerText': 'Регистрация',
+                  'className': 'box__title',
+                  'onclick': function(){
+                     
+                  }
+                },
+              },
+              '1':{
+                'default': 1,
+                'title': '',
+                'type': 'i',
+                'fields': {
+                  'className': 'far fa-times-circle',
                   'onclick': function(){
                       this.parentElement.parentElement.remove();
                   }
                 },
               },
-             '1':{
+             '2':{
                 'default': 3,
                 'title': 'Логин',
                 'type': 'div',
@@ -53,12 +66,13 @@ export default class Menu extends Component {
                     'title': '',
                     'type': 'input',
                     'fields': {
+                      'placeholder': "Логин",
                       'className': 'log__input'
                     },
                 }
               }
             },
-            '2':{
+            '3':{
                   'default': 3,
                   'title': 'Пароль',
                   'type': 'div',
@@ -71,12 +85,13 @@ export default class Menu extends Component {
                     'title': '',
                     'type': 'input',
                     'fields': {
+                      'placeholder': "Пароль",
                       'className': 'pas__input',
                     },
                   }
                 }
               },
-              '3':{
+              '4':{
                   'default': 3,
                   'title': 'Имя',
                   'type': 'div',
@@ -89,12 +104,13 @@ export default class Menu extends Component {
                     'title': '',
                     'type': 'input',
                     'fields': {
+                      'placeholder': "Имя",
                       'className': 'name__input'
                     },
                   }
                 }
               },
-              '4':{
+              '5':{
                 'default': 3,
                 'title': 'Отправить',
                 'type': 'div',
@@ -108,17 +124,166 @@ export default class Menu extends Component {
                   'type': 'input',
                   'fields': {
                     'className': 'sbm__input',
-                    'type': 'submit'
+                    'type': 'submit',
+                    'onclick': function(){
+                        alert('Регистрация')
+                    }
                   },
-                }
+                },
               }
-            }
+              },
+              '6':{
+                'default': 1,
+                'title': 'Авторизация',
+                'type': 'div',
+                'fields': {
+                    'innerText':'Авторизация',
+                    'className': 'section__box__autorize',
+                    'onclick': function(){
+                          document.getElementById('form_reg').remove();
+                          document.body.appendChild(
+                            self.parser(fieldsFormIn)
+                        );
+                    }
+                },
             }
           }
         }
       }
-
+    }
   }
+   
+
+
+
+  var fieldsFormIn = {
+    '0':{
+      'default': 3,
+      'role': 'main',
+      'title': 'слой',
+      'type': 'section',
+      'fields': {
+        'id': 'form_reg',
+        'className': 'section',
+        'onclick': function(){
+          this.remove();
+        }
+      },
+      'inElement':{
+          '0': {
+          'default': 3,
+          'title': '',
+          'type': 'main',
+          'fields': {
+            'className': 'section__box',
+            'onclick': function(e){
+              e.stopPropagation();;
+            }
+          },
+          'inElement':{
+            '0':{
+              'default': 1,
+              'title': '',
+              'type': 'h1',
+              'fields': {
+                'innerText': 'Авторизация',
+                'className': 'box__title',
+                'onclick': function(){
+                   
+                }
+              },
+            },
+            '1':{
+              'default': 1,
+              'title': '',
+              'type': 'i',
+              'fields': {
+                'className': 'far fa-times-circle',
+                'onclick': function(){
+                    this.parentElement.parentElement.remove();
+                }
+              },
+            },
+           '2':{
+              'default': 3,
+              'title': 'Логин',
+              'type': 'div',
+              'fields': {
+                  'className': 'section__box__log'
+              },
+              'inElement':{
+                '0':{
+                  'default': 1,
+                  'title': '',
+                  'type': 'input',
+                  'fields': {
+                    'placeholder': "Логин",
+                    'className': 'log__input'
+                  },
+              }
+            }
+          },
+          '3':{
+                'default': 3,
+                'title': 'Пароль',
+                'type': 'div',
+                'fields': {
+                    'className': 'section__box__pas'
+                },
+                'inElement':{
+                  '0':{
+                  'default': 1,
+                  'title': '',
+                  'type': 'input',
+                  'fields': {
+                    'placeholder': "Пароль",
+                    'className': 'pas__input',
+                  },
+                }
+              }
+            },
+            '4':{
+              'default': 3,
+              'title': 'Отправить',
+              'type': 'div',
+              'fields': {
+                  'className': 'section__box__sbm'
+              },
+              'inElement':{
+                '0':{
+                'default': 1,
+                'title': '',
+                'type': 'input',
+                'fields': {
+                  'className': 'sbm__input',
+                  'type': 'submit',
+                  'onclick': function(){
+                      alert('Авторизация')
+                  }
+                },
+              },
+            }
+            },
+            '5':{
+              'default': 1,
+              'title': 'Авторизация',
+              'type': 'div',
+              'fields': {
+                  'innerText':'Регистрация',
+                  'className': 'section__box__autorize',
+                  'onclick': function(){
+                        document.getElementById('form_reg').remove();
+                        document.body.appendChild(
+                          self.parser(fieldsFormAdd)
+                      );
+                  }
+              },
+          }
+        }
+      }
+    }
+  }
+}
 
     
     document.body.appendChild(

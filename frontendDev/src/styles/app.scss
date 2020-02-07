@@ -25,23 +25,56 @@ body {
     align-items: center;
     
     .section__box{
+      position: relative;
       text-align: center;
       width: 30%;
       margin: auto auto;
       padding: 30px;
       background: white;
       border-radius: 3px;
-      .section__close{
-        text-align: right;
+      .section__box__sbm{
+        display: inline-block;
       }
-      .section__name{
-  
+      .section__box__autorize{
+        display: inline-block;
+        background: #f0f0f0;
+        border-radius: 3px;
+        border: 1px solid #818080;
+        padding: 8px;
+        font-size: 16px;
+        outline: none;
+        cursor: pointer;
       }
-      .section__discr{
-  
+      .fa-times-circle{
+        cursor: pointer;
+        font-size: 20px;
+        position: absolute;
+        right: 5px;
+        top: 5px;
+        font-weight: 300;
+        &::before{
+          content: "\f057";
+        }
       }
-      .goods__statistik{
-  
+      input{
+        width: 300px;
+        height: 35px;
+        margin: 5px;
+        border-radius: 3px;
+        border: 1px solid #818080;
+        padding: 5px;
+        font-size: 16px;
+        outline: none;
+        cursor: pointer;
+        &:focus{
+          border-color:black;
+        }
+      }
+      input[type='submit']{
+        width: 100px;
+        &:hover{
+          border-color:black;
+        }
       }
     }
   }
