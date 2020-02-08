@@ -69,10 +69,9 @@
 | webpack-plugin | Модули для работы с webpack |    npm install --save-dev npm-install-webpack-plugin |
 redux-logger | производственный инструмент журналирования Redux, который позволяет воспроизводить проблемы, как если бы они возникали в вашем браузере. | npm i --save redux-logger |
 | webpack-plugin | Модули для работы с webpack |    npm install --save-dev npm-install-webpack-plugin |
-redux-thunk|  Redux | 
-npm install redux-thunk --save |
-
-npm install redux-thunk --save
+| redux-thunk --save | Redux | npm install redux-thunk --save |
+| body-parser --save |  Node  | npm install body-parser --save | 
+| axios |  асинхронные запросы | npm install axios |
 
 
 
@@ -127,4 +126,7 @@ https://vanillaweb.ru/create-react-boilerplate/
 9.3) https://habr.com/ru/post/246959/
 9.4) https://maxfarseer.gitbooks.io/redux-course-ru
 9.5) https://github.com/maxfarseer/redux-ru-tutorial
-10) https://tproger.ru/translations/wtf-is-ecmascript/
+9.6) https://tproger.ru/translations/wtf-is-ecmascript/
+
+10) Разное
+10.1) https://code.tutsplus.com/ru/tutorials/creating-a-blogging-app-using-react-user-sign-in--cms-28568
