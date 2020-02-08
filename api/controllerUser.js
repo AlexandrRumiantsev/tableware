@@ -1,11 +1,12 @@
 module.exports = {
-    'action' : function(app , data){
+    'action' : function(app , data , parserForm){
+       
         app.get('/', function(req, res){
 
         });
-        app.post('/addUser', function(req, res){
-
-            new data.user(data.connect , ['addItem',res.req.query], function(result){
+        app.post('/addUser', parserForm ,  function(req, res){
+            console.log(req.body.login)
+            new data.user(data.connect , ['addItem',req.body], function(result){
                 console.log(result);
             });
              

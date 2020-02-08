@@ -73,6 +73,7 @@ module.exports =  class user {
    }
    addItem(con , callback , data){
     console.log('addItem');
+    console.log(data);
      
     var id = `f${(+new Date).toString(16)}`;
     var sql = "INSERT INTO `user`(`login`, `password`, `name`, `id` , `role`) VALUES ( '"+data.login+"' , '"+data.password+"' , '"+data.name+"' , '"+id +"' , '"+data.role+"' )";

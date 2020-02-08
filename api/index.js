@@ -12,6 +12,12 @@ const controllerGoods = require('./controllerGoods');
 const controllerUser = require('./controllerUser');
 const user = require('./models/user.js');
 
+const bodyParser = require("body-parser");
+// создаем парсер для данных application/x-www-form-urlencoded
+const urlencodedParser = bodyParser.urlencoded({extended: false});
+
+app.use(bodyParser.json());
+
 (function(){
     "use strict";
     
@@ -35,7 +41,8 @@ const user = require('./models/user.js');
          {
            'connect':con,
            'user':user
-         }
+         },
+         urlencodedParser
      );
    
     app.use(function (req, res, next) {

@@ -12,7 +12,7 @@ export default class Menu extends Component {
         'title': 'слой',
         'type': 'section',
         'fields': {
-          'id': 'form_reg',
+          
           'className': 'section',
           'onclick': function(){
             this.remove();
@@ -22,9 +22,10 @@ export default class Menu extends Component {
             '0': {
             'default': 3,
             'title': '',
-            'type': 'main',
+            'type': 'form',
             'fields': {
               'className': 'section__box',
+              'id':'form_reg',
               'onclick': function(e){
                 e.stopPropagation();;
               }
@@ -66,6 +67,8 @@ export default class Menu extends Component {
                     'title': '',
                     'type': 'input',
                     'fields': {
+                      'id': 'name__log' , 
+                      'name': 'user[name__log]',
                       'placeholder': "Логин",
                       'className': 'log__input'
                     },
@@ -85,6 +88,8 @@ export default class Menu extends Component {
                     'title': '',
                     'type': 'input',
                     'fields': {
+                      'id': 'name__pas' , 
+                      'name': 'user[name__pas]',
                       'placeholder': "Пароль",
                       'className': 'pas__input',
                     },
@@ -104,6 +109,8 @@ export default class Menu extends Component {
                     'title': '',
                     'type': 'input',
                     'fields': {
+                      'id': 'name__input' ,
+                      'name': 'user[name__input]',
                       'placeholder': "Имя",
                       'className': 'name__input'
                     },
@@ -125,8 +132,17 @@ export default class Menu extends Component {
                   'fields': {
                     'className': 'sbm__input',
                     'type': 'submit',
-                    'onclick': function(){
-                        alert('Регистрация')
+                    'onclick': function(e){
+                      console.log(e);
+                        e.stopPropagation();
+                        e.preventDefault() 
+                        alert('Регистрация');
+                        const { registration } =  self.props
+                        //console.log(document.forms.form_reg.name__log)
+                        registration(
+                          document.forms.form_reg 
+                        );
+                        
                     }
                   },
                 },
@@ -258,7 +274,9 @@ export default class Menu extends Component {
                   'className': 'sbm__input',
                   'type': 'submit',
                   'onclick': function(){
-                      alert('Авторизация')
+                      alert('Авторизация');
+                      const { autorize } =  self.props
+                        console.log(autorize);
                   }
                 },
               },
@@ -357,6 +375,7 @@ createGroup(el){
   render() {
     const { data } = this.props
    
+    console.log(this.props);
     return <div className='app__menu'>
       <div>Привет, {data.name}!</div>
       <div onClick={ () => { this.popappCreate() } }>Войти</div>

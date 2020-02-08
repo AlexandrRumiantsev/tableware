@@ -163,11 +163,13 @@ createGroup(el){
    return fld;
 }
   render() {
-    console.log(this.props.name.api);
+   
     if(this.props.name.api== undefined)
-    return <div>
-      <p>Фильтры</p>
-      <p>Данные загржаются</p>
+    return <div className='overlay'>
+      <div className='lds-ripple'>
+        <div></div>
+        <div></div>
+      </div>
     </div>
     else
     return <div>
