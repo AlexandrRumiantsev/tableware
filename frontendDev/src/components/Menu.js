@@ -156,7 +156,7 @@ export default class Menu extends Component {
                     'innerText':'Авторизация',
                     'className': 'section__box__autorize',
                     'onclick': function(){
-                          document.getElementById('form_reg').remove();
+                          document.querySelector('section.section').remove();
                           document.body.appendChild(
                             self.parser(fieldsFormIn)
                         );
