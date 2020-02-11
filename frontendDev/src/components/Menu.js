@@ -135,12 +135,19 @@ export default class Menu extends Component {
                     'onclick': function(e){
                       console.log(e);
                         e.stopPropagation();
-                        e.preventDefault() 
-                        alert('Регистрация');
+                        e.preventDefault();
+
+                        
+          
                         const { registration } =  self.props
                         //console.log(document.forms.form_reg.name__log)
                         registration(
-                          document.forms.form_reg 
+                          document.forms.form_reg ,
+                          function(resp){
+                            document.querySelector('section.section').remove();
+                            document.querySelector('.overlay').remove();
+                            alert(resp);
+                          } 
                         );
                         
                     }
@@ -179,7 +186,6 @@ export default class Menu extends Component {
       'title': 'слой',
       'type': 'section',
       'fields': {
-        'id': 'form_reg',
         'className': 'section',
         'onclick': function(){
           this.remove();
@@ -189,8 +195,9 @@ export default class Menu extends Component {
           '0': {
           'default': 3,
           'title': '',
-          'type': 'main',
+          'type': 'form',
           'fields': {
+            'id': 'form_aut',
             'className': 'section__box',
             'onclick': function(e){
               e.stopPropagation();;
@@ -233,6 +240,7 @@ export default class Menu extends Component {
                   'title': '',
                   'type': 'input',
                   'fields': {
+                    'id': 'name__log',
                     'placeholder': "Логин",
                     'className': 'log__input'
                   },
@@ -252,6 +260,7 @@ export default class Menu extends Component {
                   'title': '',
                   'type': 'input',
                   'fields': {
+                    'id': 'name__pass',
                     'placeholder': "Пароль",
                     'className': 'pas__input',
                   },
@@ -276,7 +285,10 @@ export default class Menu extends Component {
                   'onclick': function(){
                       alert('Авторизация');
                       const { autorize } =  self.props
-                        console.log(autorize);
+                      console.log(document.forms.form_aut);
+                      autorize(
+                        document.forms.form_aut
+                      );
                   }
                 },
               },
