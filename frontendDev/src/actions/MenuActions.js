@@ -10,7 +10,7 @@ import {
   
     return (dispatch) => {
       dispatch({
-        type: 'GET_DATA_REQUEST'
+        type: 'GET_LOGIN_REQUEST'
       })
       
       axios.post('http://alexweber.ru:4001/'+urlAdd, 
@@ -21,18 +21,19 @@ import {
         role: 'User',
       })
       .then(function (response) {
+        console.log(getState());
         console.log(response);
         dispatch({
-            type: 'GET_DATA_SUCCESS',
-            payload: response
+            type: 'GET_LOGIN_SUCCESS',
+            load: response
         })
         callback(response);
       })
       .catch(function (error) {
         console.log(response);
         dispatch({
-            type: 'GET_DATA_FAILURE',
-            payload: error,
+            type: 'GET_LOGIN_FAILURE',
+            load: error,
             error: true
           })
       });
@@ -57,26 +58,25 @@ import {
         dispatch({
           type: 'GET_DATA_REQUEST'
         })
-        console.log(data);
+
         axios.post('http://alexweber.ru:4001/'+urlGet, 
         {
           login: data.getElementsByTagName('input').name__log.value,
-          password: data.getElementsByTagName('input').name__pas.value
+          password: data.getElementsByTagName('input').name__pass.value
         })
         .then(function (response) {
-          
+          console.log(response.data);
           dispatch({
-              type: 'GET_DATA_SUCCESS',
-              payload: response
+              type: 'GET_LOGIN_SUCCESS',
+              arr: response.data
           })
-          callback(response);
         })
         .catch(function (error) {
           console.log(error);
           dispatch({
-              type: 'GET_DATA_FAILURE',
-              payload: error,
-              error: true
+              type: 'GET_LOGIN_FAILURE',
+              arr: error,
+              errors: true
             })
         });
         }

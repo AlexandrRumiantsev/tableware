@@ -7,7 +7,9 @@ export default function configureStore(initialState) {
   const store = createStore(
     rootReducer,
     initialState,
-    applyMiddleware(thunk , createLogger)) 
+    applyMiddleware(thunk , createLogger)
+    
+  ) 
 
   if (module.hot) {
     module.hot.accept('../reducers', () => {
