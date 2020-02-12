@@ -282,8 +282,9 @@ export default class Menu extends Component {
                 'fields': {
                   'className': 'sbm__input',
                   'type': 'submit',
-                  'onclick': function(){
+                  'onclick': function(e){
                       alert('Авторизация');
+                      e.preventDefault();
                       const { autorize } =  self.props
                       console.log(document.forms.form_aut);
                       autorize(
