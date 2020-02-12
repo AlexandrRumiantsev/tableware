@@ -290,6 +290,8 @@ export default class Menu extends Component {
                       autorize(
                         document.forms.form_aut
                       );
+                      document.querySelector('section.section').remove();
+                      document.querySelector('.overlay').remove();
                   }
                 },
               },

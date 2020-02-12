@@ -4,13 +4,16 @@ const initialState = {
   }
   
   export default function menu(state = initialState, action) {
-  	
+  	 
     switch (action.type) {
         case 'GET_LOGIN_FAILURE':
-          return {}, state, {user: action.arr ,  log: true }
+          return {}, state, {user: action.arr ,  log: false }
           
         case 'GET_LOGIN_SUCCESS':
-          return {}, state, {user: action.arr , name: nameUser , log: false}
+          if(action.arr.length == 2){
+            alert('Неверный логин или пароль!')
+            return {}, state, {user: action.arr , name: 'Аноним' , log: false }
+          }else return {}, state, {user: action.arr , name:  JSON.parse(action.arr)[0].name , log: true }
   
     
         default:
