@@ -11,9 +11,9 @@ module.exports = {
             });
              
         })
-        app.get('/getByLoginAndPass', function(req, res){
-            new data.user(data.connect , ['getByLoginAndPass',res.req.query], function(result){
-                console.log(result);
+        app.post('/getByLoginAndPass', parserForm , function(req, res){
+            new data.user(data.connect , ['getByLoginAndPass',req.body], function(result){
+                res.send(JSON.stringify(result));
             });
         });
         /*
