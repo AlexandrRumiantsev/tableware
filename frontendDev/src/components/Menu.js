@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component , useState } from 'react'
 import PropTypes from 'prop-types';
 
 export default class Menu extends Component {
@@ -390,14 +390,36 @@ createGroup(el){
   render() {
     const { data } = this.props
    
-    console.log(this.props);
+    let admPanel;
+    (data.role == 'admin') ? admPanel = true : admPanel = false;
+
     return <div className='app__menu'>
+     
       <div>Привет, {data.name}!</div>
       <div onClick={ () => { this.popappCreate() } }>Войти</div>
+      {admPanel ? <Panel /> : ''}
     </div>
   }
 }
 
 Menu.propTypes = {
   name: PropTypes.string.isRequired
+}
+
+
+
+function Panel() {
+  
+  const [count, setCount] = useState(0);
+  const REACT_VERSION = React.version;
+
+  return (
+    <div>
+      <div>React version: {REACT_VERSION}</div>
+      <p>Вы кликнули {count} раз</p>
+      <button onClick={() => setCount(count + 1)}>
+        Нажми на меня
+      </button>
+    </div>
+  );
 }

@@ -13,7 +13,7 @@ const initialState = {
           if(action.arr.length == 2){
             alert('Неверный логин или пароль!')
             return {}, state, {user: action.arr , name: 'Аноним' , log: false }
-          }else return {}, state, {user: action.arr , name:  JSON.parse(action.arr)[0].name , log: true }
+          }else return {}, state, {user: action.arr , name:  JSON.parse(action.arr)[0].name , log: true , role: JSON.parse(action.arr)[0].role }
   
     
         default:
