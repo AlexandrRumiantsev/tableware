@@ -59,16 +59,29 @@ module.exports =  class user {
     
    }
   */
-   getByLoginAndPass(con , callback , data){
+   getByLoginAndPass(con , callback , data , jwt){
     var sql = "SELECT * FROM `user` where login='" + data['login'] + "' AND password='" + data['password'] + "'";
     console.log(sql);
+ 
     con.query(sql, function (err, result) {
         if (err) throw err
-
-        callback(
-            JSON.stringify(result) 
-        );
-    
+       
+        
+            const user = {
+                id: result['id'],
+                login: result['login'],
+                password: result['password'],
+                name: result['name'],
+                role: result['role']
+            }
+            
+            jwt.sign({user},'SuperSecRetKey', { expiresIn: 60 * 60 }, (err, token) => {
+                result[0].token = token;
+                callback(
+                    JSON.stringify(result) 
+                );
+            });
+           
     });
    }
    addItem(con , callback , data){
@@ -104,11 +117,11 @@ module.exports =  class user {
         })
     }    
   */
-  constructor(connect , action , callback) {
+  constructor(connect , action , callback , token) {
        if(action[0] == 'addItem')
             this.addItem(connect , callback , action[1]);
         if(action[0] == 'getByLoginAndPass')
-            this.getByLoginAndPass(connect , callback , action[1]);        
+            this.getByLoginAndPass(connect , callback , action[1] , token);        
       /*
       switch(action){
         case 'getList':

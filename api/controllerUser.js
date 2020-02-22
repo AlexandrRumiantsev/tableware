@@ -1,20 +1,22 @@
 module.exports = {
-    'action' : function(app , data , parserForm){
+    'action' : function(app , data , parserForm , jwt){
        
         app.get('/', function(req, res){
 
         });
         app.post('/addUser', parserForm ,  function(req, res){
-            console.log(req.body.login)
+            
             new data.user(data.connect , ['addItem',req.body], function(result){
-                console.log(result);
+                //console.log(result);
             });
              
         })
         app.post('/getByLoginAndPass', parserForm , function(req, res){
             new data.user(data.connect , ['getByLoginAndPass',req.body], function(result){
                 res.send(JSON.stringify(result));
-            });
+            },
+            jwt
+            );
         });
         /*
         app.get('/getCatalog', function(req, res){
