@@ -394,10 +394,8 @@ createGroup(el){
     (data.role == 'admin') ? admPanel = true : admPanel = false;
 
     return <div className='app__menu'>
-     
       <div>Привет, {data.name}!</div>
-      <div onClick={ () => { this.popappCreate() } }>Войти</div>
-      {admPanel ? <Panel /> : ''}
+      {admPanel ? <Panel /> : <div onClick={ () => { this.popappCreate() } }>Войти</div>}
     </div>
   }
 }
@@ -409,9 +407,12 @@ Menu.propTypes = {
 
 
 function Panel() {
-  
   const [count, setCount] = useState(0);
   const REACT_VERSION = React.version;
+  const logout = function(){
+    sessionStorage.removeItem('user');
+    window.location.href = window.location.href;
+  }
 
   return (
     <div>
@@ -419,6 +420,9 @@ function Panel() {
       <p>Вы кликнули {count} раз</p>
       <button onClick={() => setCount(count + 1)}>
         Нажми на меня
+      </button>
+      <button onClick={() => logout()}>
+        Выйти
       </button>
     </div>
   );
