@@ -1,5 +1,7 @@
 import React, { Component , useState } from 'react'
 import PropTypes from 'prop-types';
+import ReactDOM from 'react-dom';
+import { Admin , formAdmPanel , enterAdmin} from './MenuAdmin'
 
 export default class Menu extends Component {
   popappCreate(data){
@@ -406,22 +408,31 @@ Menu.propTypes = {
 
 
 
-function Panel() {
-  const [count, setCount] = useState(0);
+function Panel() { 
+  const [count, setCount , loadWorksheep] = useState(0);
+  
+
+  return (<div>{ this.state.loadWorksheep ? <Panel/> : <Admin/> }</div>);
+}
+
+function Panel(props) {
   const REACT_VERSION = React.version;
+
   const logout = function(){
     sessionStorage.removeItem('user');
     window.location.href = window.location.href;
   }
-
+  
   return (
-    <div>
+    <div> 
       <div>React version: {REACT_VERSION}</div>
-      <p>Вы кликнули {count} раз</p>
-      <button onClick={() => setCount(count + 1)}>
-        Нажми на меня
+      {/* <button onClick={() => setCount(count + 1)}>
+        setCount
+      </button> */}
+      <button onClick={() => enterAdmin() }>
+        Административная панель
       </button>
-      <button onClick={() => logout()}>
+      <button onClick={() => logout() }>
         Выйти
       </button>
     </div>
