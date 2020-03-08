@@ -132,3 +132,67 @@ body {
   }
 }
 //Конец стилей спинера
+
+#add-page{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  /* flex-direction: column; */
+  .add-container{
+    max-width: 90%;
+    color: #000;
+    border: 1px solid #000;
+  }
+}
+#add-page{
+  .add-container{
+    h1{
+      text-align: center;
+    }
+    .colm-container{
+      display: flex;
+      .colm-right{
+         display: block;
+         width: 100%;
+         *{
+          padding: 15px;
+          display: inline-block;
+          width: 100%;
+          font-size: 18px;
+          &:nth-child(2) { 
+            height: 200px;
+          }
+         }
+      }
+      .colm-left{
+        display: block;
+        width: 100%;
+        .colm-content{
+          padding: 15px;
+          display: inline-block;
+          width: 100%;
+          input[type='file']{
+            display:none;
+          }
+          .file-in{
+            width: 200px;
+            height: 200px;
+            border: 1px solid #000;
+            position: relative;
+            cursor: pointer;
+            &:hover{
+              border: 1px solid rgb(252, 0, 0);
+            }
+            img{
+              position: absolute;
+              width: 100%;
+              height: 100%;
+            }
+          }
+        }
+      }
+    }
+    
+  }
+}

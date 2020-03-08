@@ -1,12 +1,12 @@
 import React, { Component , useState } from 'react'
 import PropTypes from 'prop-types';
 import ReactDOM from 'react-dom';
-import { Admin , formAdmPanel , enterAdmin} from './MenuAdmin'
+import { Admin , formAdmPanel , enterAdmin} from './Admin'
 
 export default class Menu extends Component {
   popappCreate(data){
     const self = this;
-
+     
     var fieldsFormAdd = {
       '0':{
         'default': 3,
@@ -378,26 +378,26 @@ createElem(elem){
 }
 
 
-createGroup(el){
+  createGroup(el){
 
-  
-  let fld = document.createElement(el.type);
+    
+    let fld = document.createElement(el.type);
 
-  Object.keys(el.fields).forEach(function(elementField) {
-    fld[elementField] = el.fields[elementField]
-   })
-  
-   return fld;
-}
+    Object.keys(el.fields).forEach(function(elementField) {
+      fld[elementField] = el.fields[elementField]
+    })
+    
+    return fld;
+  }
   render() {
-    const { data } = this.props
-   
+    const { data , admin} = this.props
+    //console.log(admin);
     let admPanel;
     (data.role == 'admin') ? admPanel = true : admPanel = false;
 
     return <div className='app__menu'>
       <div>Привет, {data.name}!</div>
-      {admPanel ? <Panel /> : <div onClick={ () => { this.popappCreate() } }>Войти</div>}
+      {admPanel ? <Panel admin={admin}  /> : <div onClick={ () => { this.popappCreate() } }>Войти</div>}
     </div>
   }
 }
@@ -410,14 +410,12 @@ Menu.propTypes = {
 
 function Panel() { 
   const [count, setCount , loadWorksheep] = useState(0);
-  
-
   return (<div>{ this.state.loadWorksheep ? <Panel/> : <Admin/> }</div>);
 }
 
 function Panel(props) {
   const REACT_VERSION = React.version;
-
+  console.log(props.admin);
   const logout = function(){
     sessionStorage.removeItem('user');
     window.location.href = window.location.href;
@@ -429,7 +427,7 @@ function Panel(props) {
       {/* <button onClick={() => setCount(count + 1)}>
         setCount
       </button> */}
-      <button onClick={() => enterAdmin() }>
+      <button onClick={() => enterAdmin(props.admin) }>
         Административная панель
       </button>
       <button onClick={() => logout() }>
