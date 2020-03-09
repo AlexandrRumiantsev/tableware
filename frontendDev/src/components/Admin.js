@@ -20,7 +20,8 @@ export function enterAdmin(data){
               "form",
               {
                   className: "colm-container",
-                  id: "add_form"
+                  id: "add_form",
+                  encType: "multipart/form-data"
               },
 
             React.createElement(
@@ -62,6 +63,8 @@ export function enterAdmin(data){
                     type: "file",
                     id: 'file-target',
                     name: 'file',
+                    crossorigin: "anonymous",
+                    accept: "image/*",
                     onInput: function onInput(e) {
                       var input = event.target;
                       var reader = new FileReader();

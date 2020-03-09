@@ -1,41 +1,14 @@
-function isAuthenticated(req, res, next) {
-    if (typeof req.headers.authorization !== "undefined") {
-        // retrieve the authorization header and parse out the
-        // JWT using the split function
-        let token = req.headers.authorization.split(" ")[1];
-        let privateKey = fs.readFileSync('./private.pem', 'utf8');
-        // Here we validate that the JSON Web Token is valid and has been 
-        // created using the same private pass phrase
-        jwt.verify(token, privateKey, { algorithm: "HS256" }, (err, user) => {
-            
-            // if there has been an error...
-            if (err) {  
-                // shut them out!
-                res.status(500).json({ error: "Not Authorized" });
-                throw new Error("Not Authorized");
-            }
-            // if the JWT is valid, allow them to hit
-            // the intended endpoint
-            return next();
-        });
-    } else {
-        // No authorization header exists on the incoming
-        // request, return not authorized and throw a new error 
-        res.status(500).json({ error: "Not Authorized" });
-        throw new Error("Not Authorized");
-    }
-}
-
-
-
-
 const express = require("express");
 const app = express();
 const goods = require('./models/goods.js');
 const qs = require('querystring');
 //Обход CORS Блокировки
 var cors = require('cors');
-app.use(cors());
+var corsOptions =  { 
+  origin :  '*' , 
+  optionsSuccessStatus :  200 , 
+}
+app.use(cors(corsOptions));
 var http = require('http').Server(app);
 var mysql = require('mysql');
 var config = require('./config');
@@ -48,13 +21,35 @@ const bodyParser = require("body-parser");
 const urlencodedParser = bodyParser.urlencoded({extended: false});
 
 app.use(bodyParser.json());
+app.use(bodyParser.urlencoded());
+app.use(bodyParser.urlencoded({ extended: true }));
+
 const jwt = require('jsonwebtoken');
 const fs = require('fs');
 
+const multer = require('multer');
+
+var storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, 'uploads')
+  },
+  filename: function (req, file, cb) {
+    cb(null, file.fieldname + '-' + Date.now())
+  }
+})
+ 
+var upload = multer({ storage: storage })
+
+app.use(upload.array()); 
+app.use(express.static('public'));
+
+console.log(upload);
 
 (function(){
     "use strict";
     
+    
+     
      var con = mysql.createConnection({
         host: config.data.host,
         user: config.data.login,
@@ -67,7 +62,8 @@ const fs = require('fs');
          {
            'connect':con,
            'goods':goods
-         }
+         },
+         urlencodedParser
      );
      
      controllerUser.action(
@@ -80,6 +76,14 @@ const fs = require('fs');
          jwt
      );
    
+    app.post('/uploadfile', urlencodedParser , (req, res, next) => {
+        console.log('/uploadfile');
+        console.log(req.body.file);
+        fs.writeFile('image.png', req.body.file, {encoding: 'base64'}, function(err) {
+            console.log('File created');
+        });
+    })
+    
     app.use(function (req, res, next) {
         next();
     });

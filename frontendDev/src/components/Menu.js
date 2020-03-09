@@ -396,6 +396,9 @@ createElem(elem){
     (data.role == 'admin') ? admPanel = true : admPanel = false;
 
     return <div className='app__menu'>
+      <div className='menu__list'>
+          { <List /> }
+      </div>
       <div>Привет, {data.name}!</div>
       {admPanel ? <Panel admin={admin}  /> : <div onClick={ () => { this.popappCreate() } }>Войти</div>}
     </div>
@@ -407,11 +410,19 @@ Menu.propTypes = {
 }
 
 
-
-function Panel() { 
+function List() {
+ 
+    return (
+      <a href=''> 
+          Тестовая страница
+      </a>
+    )
+  
+}
+/*function Panel() { 
   const [count, setCount , loadWorksheep] = useState(0);
   return (<div>{ this.state.loadWorksheep ? <Panel/> : <Admin/> }</div>);
-}
+}*/
 
 function Panel(props) {
   const REACT_VERSION = React.version;

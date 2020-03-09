@@ -77,6 +77,7 @@ module.exports =  class user {
             
             jwt.sign({user},'SuperSecRetKey', { expiresIn: 60 * 60 }, (err, token) => {
                 result[0].token = token;
+    
                 callback(
                     JSON.stringify(result) 
                 );

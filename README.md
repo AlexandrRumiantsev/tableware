@@ -73,6 +73,7 @@ redux-logger | производственный инструмент журна�
 | body-parser --save |  Node  | npm install body-parser --save | 
 | axios |  асинхронные запросы | npm install axios |
 | jsonwebtoken | работа с токенами | npm install jsonwebtoken |
+| base64-img | работа с токенами | npm i base64-img |
 
 
 

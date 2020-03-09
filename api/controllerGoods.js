@@ -1,10 +1,11 @@
 module.exports = {
-    'action' : function(app , data){
+    'action' : function(app , data , parserForm){
         app.get('/', function(req, res){
-
+            
         });
         
         app.get('/getCatalog', function(req, res){
+                console.log(req.headers);
            new data.goods(data.connect , 'getList', function(result){
                 res.send(result);
             });
@@ -32,8 +33,10 @@ module.exports = {
             });
              
         })
-        app.post('/addItem', function(req, res){
-            
+        app.post('/addItem' , function(req, res){
+            console.log('!!!!req.files!!!!');
+          console.log(req.body) 
+            //console.log(res);
             new data.goods(data.connect , ['addItem',req.headers.data], function(result){
                 console.log(result);
             });

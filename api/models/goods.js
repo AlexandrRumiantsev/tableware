@@ -61,6 +61,7 @@ module.exports =  class goods {
   
    addItem(con , callback , data){
     console.log('addItem');
+     console.log(data);
     var arData = JSON.parse(data); 
     var id = `f${(+new Date).toString(16)}`;
     var sql = "INSERT INTO `goods`(`title`, `discr`, `json`, `id`) VALUES ( '"+arData['title']+"' , '"+arData['discr']+"' , '"+arData['json']+"' , '"+id +"')";

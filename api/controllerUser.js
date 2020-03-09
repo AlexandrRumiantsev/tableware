@@ -2,7 +2,8 @@ module.exports = {
     'action' : function(app , data , parserForm , jwt){
        
         app.get('/', function(req, res){
-
+              
+     
         });
         app.post('/addUser', parserForm ,  function(req, res){
             
